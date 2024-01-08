@@ -110,9 +110,9 @@ const Signup = (props) => {
           type="submit"
           onClick={signUp}
         >
-          {/* <pre className="font-semibold" onClick={signUp}> */}
-          Sign Up
-          {/* </pre> */}
+          <pre className="font-semibold" onClick={signUp}>
+            Sign Up
+          </pre>
         </button>
       </div>
     </>
