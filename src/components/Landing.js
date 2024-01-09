@@ -340,7 +340,7 @@ const Landing = () => {
         <>
           {/* <div className="w-[100%] h-[100svh] drop-shadow-md fixed"> */}
           <div
-            className="w-[80%] h-[calc(100%-160px)]  bg-[#ffe4bc] rounded-xl  fixed bottom-[80px] overflow-hidden z-40 flex flex-col justify-center items-center"
+            className="w-[80%] lg:w-[300px] h-[calc(100%-160px)]  bg-[#ffe4bc] rounded-xl  fixed bottom-[80px] overflow-hidden z-40 flex flex-col justify-center items-center"
             style={{ transition: ".4s" }}
           >
             {recordDataa?.map((daata) => {
