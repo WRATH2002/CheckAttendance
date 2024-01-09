@@ -39,6 +39,38 @@ export const Friday = [
   { Sub: "Computer Networks Lab" },
 ];
 
+export const MondayTemp = [
+  { Sub: "Computer Networks" },
+  { Sub: "Compiler Design" },
+  { Sub: "Soft Computing" },
+  { Sub: "Pre-Placement" },
+];
+export const TuesdayTemp = [
+  { Sub: "Compiler Design Lab" },
+  { Sub: "Soft Computing" },
+  { Sub: "Compiler Design" },
+  { Sub: "Data Analytics" },
+];
+export const WednesdayTemp = [
+  { Sub: "Computer Networks" },
+  { Sub: "Data Analytics" },
+  { Sub: "Finance & Accounting" },
+  { Sub: "Compiler Design" },
+  { Sub: "Pre-Placement" },
+];
+export const ThursdayTemp = [
+  { Sub: "Computer Networks" },
+  { Sub: "Data Analytics" },
+  { Sub: "Soft Computing" },
+  { Sub: "Finance & Accounting" },
+  { Sub: "SDP - VI" },
+];
+export const FridayTemp = [
+  { Sub: "Computer Networks" },
+  { Sub: "ESP- VI" },
+  { Sub: "Computer Networks Lab" },
+];
+
 // ("Computer Networks");
 // ("Compiler Design");
 // ("Soft Computing");

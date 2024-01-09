@@ -4,6 +4,11 @@ import { Tuesday } from "./constant";
 import { Wednesday } from "./constant";
 import { Thursday } from "./constant";
 import { Friday } from "./constant";
+import { MondayTemp } from "./constant";
+import { TuesdayTemp } from "./constant";
+import { WednesdayTemp } from "./constant";
+import { ThursdayTemp } from "./constant";
+import { FridayTemp } from "./constant";
 import { TiTick } from "react-icons/ti";
 import toast, { Toaster } from "react-hot-toast";
 import { auth } from "../firebase";
@@ -167,7 +172,7 @@ const Segment = (props) => {
 const Landing = () => {
   var date = new Date();
   var day = date.getDay();
-  //   var day = 6;
+  // var day = 2;
   var datee =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   const [submit, setSubmit] = useState(false);
@@ -178,10 +183,11 @@ const Landing = () => {
   const [tday, setTday] = useState(0);
   const [show, setShow] = useState(false);
   const [recordDataa, setRecordDataa] = useState();
+  const [tempRoutine, setTempRoutine] = useState();
 
   function create() {
     const user = firebase.auth().currentUser;
-    console.log(user.uid);
+    // console.log(user.uid);
     db.collection("SEM6").doc(user.uid).set({ name: "hp" });
   }
 
@@ -210,10 +216,7 @@ const Landing = () => {
       setSubDate(data.data().submitDate);
       setPreDate(data.data().presentDate);
     });
-    // submitRef.get().then((data) => {
-    //   // console.log(data.data().submitStatus);
 
-    // });
     const timeRef = db
       .collection("SEM6")
       .doc(user.uid)
@@ -224,10 +227,10 @@ const Landing = () => {
     const user = firebase.auth().currentUser;
     // const e = preDate.localeCompare(subDate);
     if (preDate === subDate) {
-      console.log("same -----------------------");
+      // console.log("same -----------------------");
       db.collection("SEM6").doc(user.uid).update({ submitStatus: true });
     } else {
-      console.log(" not same -----------------------");
+      // console.log(" not same -----------------------");
       db.collection("SEM6").doc(user.uid).update({ submitStatus: false });
     }
   }
@@ -251,8 +254,8 @@ const Landing = () => {
     const subRef = db.collection("SEM6").doc(user.uid);
     subRef.get().then((data) => {
       setRecordLastData(data.data().subjects);
-      console.log("data.data().subjects[0].TDay");
-      console.log(data.data().subjects[0].TDay);
+      // console.log("data.data().subjects[0].TDay");
+      // console.log(data.data().subjects[0].TDay);
       setTday(data.data().subjects[0].TDay);
     });
   }
@@ -273,9 +276,58 @@ const Landing = () => {
 
   function finalUpdate() {
     const user = firebase.auth().currentUser;
-    recordLastData.forEach((element) => {
-      element.TDay = tday + 1;
-    });
+    if (day === 1) {
+      MondayTemp.map((sub) => {
+        recordLastData.forEach((element) => {
+          if (sub.Sub === element.Sub) {
+            let tempVar = element.TDay;
+            element.TDay = tempVar + 1;
+          }
+        });
+      });
+    } else if (day === 2) {
+      TuesdayTemp.map((sub) => {
+        recordLastData.forEach((element) => {
+          if (sub.Sub === element.Sub) {
+            let tempVar = element.TDay;
+            element.TDay = tempVar + 1;
+          }
+        });
+      });
+    } else if (day === 3) {
+      WednesdayTemp.map((sub) => {
+        recordLastData.forEach((element) => {
+          if (sub.Sub === element.Sub) {
+            let tempVar = element.TDay;
+            element.TDay = tempVar + 1;
+          }
+        });
+      });
+    } else if (day === 4) {
+      ThursdayTemp.map((sub) => {
+        recordLastData.forEach((element) => {
+          if (sub.Sub === element.Sub) {
+            let tempVar = element.TDay;
+            element.TDay = tempVar + 1;
+          }
+        });
+      });
+    } else if (day === 5) {
+      FridayTemp.map((sub) => {
+        recordLastData.forEach((element) => {
+          if (sub.Sub === element.Sub) {
+            let tempVar = element.TDay;
+            element.TDay = tempVar + 1;
+          }
+        });
+      });
+    }
+
+    // recordLastData.forEach((element) => {
+    //   let tempVar = element.TDay;
+
+    //   element.TDay = tempVar + 1;
+    // });
     const subbRef = db
       .collection("SEM6")
       .doc(user.uid)
@@ -300,10 +352,19 @@ const Landing = () => {
                     </pre>
 
                     <pre
-                      className="w-[70px] h-[26px] rounded-[100px] flex justify-center  items-center cursor-pointer text-[14px] "
+                      className="w-[70px] h-[26px] rounded-[100px] flex justify-end pr-[10px] items-center cursor-pointer text-[14px] "
                       // style={{ transition: ".4s" }}
                     >
-                      {(daata?.ADay / daata?.TDay) * 100}%
+                      {daata?.TDay == 0 ? (
+                        <>
+                          -- [{daata?.ADay}/{daata?.TDay}]
+                        </>
+                      ) : (
+                        <>
+                          {(daata?.ADay / daata?.TDay) * 100}% [{daata?.ADay}/
+                          {daata?.TDay}]
+                        </>
+                      )}
                     </pre>
                   </div>
                 </>
